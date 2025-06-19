@@ -97,17 +97,17 @@ class MainActivity : AppCompatActivity() {
                 ).show()
                 return@setPositiveButton
 
-                //Making sure the user cant enter 0
-            val quantity = quantityStr.toIntOrNull()
-            if (quantity == null || quantity <= 0) {
-                Snackbar.make(
-                    findViewById(android.R.id.content),
-                    "Invalid rating. Please enter a number greater than zero.",
-                    Snackbar.LENGTH_SHORT
-                ).show()
-                return@setPositiveButton
-
             }
+                //Making sure the user cant enter 0
+                val quantity = quantityStr.toIntOrNull()
+                if (quantity == null || quantity <= 0) {
+                    Snackbar.make(
+                        findViewById(android.R.id.content),
+                        "Invalid rating. Please enter a number greater than zero.",
+                        Snackbar.LENGTH_SHORT
+                    ).show()
+                    return@setPositiveButton
+                }
 
                 song.add(SongName)
                 this.artist.add(category)
@@ -121,11 +121,9 @@ class MainActivity : AppCompatActivity() {
                 ).show()
                 dialog.dismiss()
             }
-
             builder.setNegativeButton("Cancel") { dialog, _ ->
-                dialog.cancel()
+                    dialog.cancel()
             }
             builder.show()
     }
 }
-
